@@ -12,6 +12,8 @@ jobs:
 
     permissions:
       contents: write
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout
@@ -22,7 +24,7 @@ jobs:
       - name: Set current date as environment variable
         run: echo "DATE=`date +'%Y.%m.%d'`" >>$GITHUB_ENV
 
-      - name: Building TCET Linux Welcome Tar file
+      - name: Building Calamares Tar file
         run: |
           cd ..
           touch calamares.tar.gz
