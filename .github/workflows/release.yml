@@ -1,10 +1,12 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Version number to release'
+        required: true
+        type: string
 
 jobs:
   release:
@@ -31,12 +33,12 @@ jobs:
       - name: Building Calamares Tar file
         run: |
           cd ..
-          touch calamares.tar.gz
-          tar -czf calamares.tar.gz calamares/
+          touch calamares-${{ inputs.tags }}.tar.gz
+          tar -czf calamares-${{ inputs.tags }}.tar.gz calamares/
           touch checksum
-          sha256sum calamares.tar.gz > checksum
+          sha256sum calamares-${{ inputs.tags }}.tar.gz > checksum
           mv checksum calamares/
-          mv calamares.tar.gz calamares/
+          mv calamares${{ inputs.tags }}.tar.gz calamares/
 
       - name: Checking if release with date tag exist
         run: |
