@@ -38,7 +38,7 @@ jobs:
           touch checksum
           sha256sum calamares-${{ inputs.tags }}.tar.gz > checksum
           mv checksum calamares/
-          mv calamares${{ inputs.tags }}.tar.gz calamares/
+          mv calamares-${{ inputs.tags }}.tar.gz calamares/
 
       - name: Checking if release with date tag exist
         run: |
