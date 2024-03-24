@@ -24,6 +24,10 @@ jobs:
       - name: Set current date as environment variable
         run: echo "DATE=`date +'%Y.%m.%d'`" >>$GITHUB_ENV
 
+      - name: Remove unused files
+        run: |
+          rm -rf .git/ .github/ .editorconfig .gitignore .gitmodules .gitattributes .tx/
+
       - name: Building Calamares Tar file
         run: |
           cd ..
