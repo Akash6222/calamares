@@ -26,7 +26,7 @@ jobs:
 
       - name: Remove unused files
         run: |
-          rm -rf .git/ .github/ .editorconfig .gitignore .gitmodules .gitattributes .tx/
+          rm -rf .github/ .editorconfig .gitignore .gitmodules .gitattributes .tx/
 
       - name: Building Calamares Tar file
         run: |
